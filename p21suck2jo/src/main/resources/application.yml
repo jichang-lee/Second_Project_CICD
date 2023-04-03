@@ -1,34 +1,35 @@
 server:
   port: 8099
 
-  servlet:
-    session:
-      timeout: 1m
-
 spring:
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/policeoffice?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
-    password: 1234
+    url: jdbc:mysql://ec2-mysql-db2.cdmssvujvy8y.ap-northeast-2.rds.amazonaws.com:3306/p21suckjo
+
+    username: jichang23
+    password: dlwlckd12
 
   jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
-      ddl-auto: update
-    properties:
+      format_sql: true
+      ddl-auto: create
+
+logging:
+  level:
+    org:
       hibernate:
-        format_sql: true
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 
-  servlet:
-    multipart:
-      max-file-size: 500MB
-      max-request-size: 500MB
-      location: C:\Users\Public\PoliceOfficeUploadFiles\Files
-
-  #필수 oauth.yml이랑연결
-  profiles:
-    include: oauth
 
