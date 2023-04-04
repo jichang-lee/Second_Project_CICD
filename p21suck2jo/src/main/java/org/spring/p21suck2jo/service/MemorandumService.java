@@ -17,6 +17,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class MemorandumService {
+
     @Value("${spring.servlet.multipart.location}")
     private String uploadPath;
     private final MemorandumRepository memorandumRepository;
