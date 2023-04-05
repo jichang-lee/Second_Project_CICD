@@ -29,6 +29,7 @@ public class LoginController {
     @GetMapping("/index")
     public String index(HttpServletRequest request, HttpSession currentPoliceIdSession){
         Principal principal = request.getUserPrincipal();
+
         Long policeId= policeLoginService.findPoliceIdByEmail(principal.getName());
         currentPoliceIdSession.setAttribute("currentPoliceId", policeId.toString());
 
